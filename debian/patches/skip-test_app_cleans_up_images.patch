@@ -1,0 +1,25 @@
+Description: Skip test_app_cleans_up_images (blockdiag.tests.test_command.TestBlockdiagApp)
+
+Not worki test why I removes remote image url on diagram.
+So skips the test case.
+
+Author: Kouhei Maeda <mkouhei@palmtb.net>
+Last-Updated: 2021-01-31
+Index: blockdiag-2.0.1+dfsg/src/blockdiag/tests/test_command.py
+===================================================================
+--- blockdiag-2.0.1+dfsg.orig/src/blockdiag/tests/test_command.py	2021-01-31 23:21:01.554777296 +0900
++++ blockdiag-2.0.1+dfsg/src/blockdiag/tests/test_command.py	2021-01-31 23:21:16.054776701 +0900
+@@ -16,11 +16,13 @@
+ import os
+ import unittest
+ 
++from nose.tools import nottest
+ from blockdiag.command import BlockdiagApp
+ from blockdiag.tests.utils import TemporaryDirectory
+ 
+ 
+ class TestBlockdiagApp(unittest.TestCase):
++    @nottest
+     def test_app_cleans_up_images(self):
+         testdir = os.path.dirname(__file__)
+         diagpath = os.path.join(testdir,

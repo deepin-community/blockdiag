@@ -1,0 +1,32 @@
+Description: Changes remote image resource to local files from base packages.
+Author: Kouhei Maeda <mkouhei@palmtb.net>
+Last-Update: 2021-01-31
+
+Index: blockdiag-2.0.1+dfsg/src/blockdiag/tests/diagrams/background_url_image.diag
+===================================================================
+--- blockdiag-2.0.1+dfsg.orig/src/blockdiag/tests/diagrams/background_url_image.diag	2021-01-31 23:18:56.102782440 +0900
++++ blockdiag-2.0.1+dfsg/src/blockdiag/tests/diagrams/background_url_image.diag	2021-01-31 23:19:30.122781045 +0900
+@@ -1,7 +1,8 @@
+ {
+-  A [background = "http://python.org/images/python-logo.gif"];
+-  B [background = "http://blockdiag.com/favicon.ico"];
+-  C [background = "http://upload.wikimedia.org/wikipedia/commons/9/9b/Scalable_Vector_Graphics_Circle2.svg"];
+-  D [background = "http://people.sc.fsu.edu/~jburkardt/data/eps/circle.eps"];
++  A [background = "blockdiag/tests/diagrams/white.gif"];
++  B [background = "logo.ico"];
++  C [background = "blockdiag/tests/diagrams/debian-logo-256color-palettealpha.png"];
++  D [background = "circle.eps"];
++  E [background = "circle.svg"];
+   Z;
+ }
+Index: blockdiag-2.0.1+dfsg/src/blockdiag/tests/diagrams/node_icon.diag
+===================================================================
+--- blockdiag-2.0.1+dfsg.orig/src/blockdiag/tests/diagrams/node_icon.diag	2021-01-31 23:18:56.102782440 +0900
++++ blockdiag-2.0.1+dfsg/src/blockdiag/tests/diagrams/node_icon.diag	2021-01-31 23:19:54.734780036 +0900
+@@ -2,5 +2,5 @@
+   A -> B;
+ 
+   A [label = "aaaaaaaaaaaaaaaaa", icon = "/usr/share/pixmaps/debian-logo.png"];
+-  B [label = "aaaaaaaaaaaaaaaaa", icon = "http://blockdiag.com/favicon.ico"];
++  B [label = "aaaaaaaaaaaaaaaaa", icon = "blockdiag/tests/diagrams/debian-logo-256color-palettealpha.png"];
+ }

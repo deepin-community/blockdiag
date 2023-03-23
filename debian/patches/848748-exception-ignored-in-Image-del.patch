@@ -1,0 +1,40 @@
+Description: Fix test failure with wand 0.4.1+
+ 
+wand 0.4.1 added an Image.destroy()
+(https://sources.debian.net/src/wand/0.4.4-1/wand/image.py/#L2760) that
+iterates over self.sequence (the frames of an animation) to free their
+memory; this throws an exception on single images (where
+self.sequence=None), but as this is called from __del__, this
+exception is warned about then ignored
+(https://docs.python.org/3/reference/datamodel.html#object.__del__),
+and hence is not an error in normal use.
+
+However, blockdiag tests that use capture_stderr fail on any output
+containing "Traceback", including this warning message.
+
+This patch ignores this message to allow blockdiag to build.
+
+Author: Rebecca Palmer <rebecca_palmer@zoho.com>
+Bug-Debian: https://bugs.debian.org/848748
+Forwarded: no
+
+Index: blockdiag-2.0.1+dfsg/src/blockdiag/tests/utils.py
+===================================================================
+--- blockdiag-2.0.1+dfsg.orig/src/blockdiag/tests/utils.py	2021-01-31 23:23:07.242772141 +0900
++++ blockdiag-2.0.1+dfsg/src/blockdiag/tests/utils.py	2021-01-31 23:23:07.238772142 +0900
+@@ -74,7 +74,14 @@
+ 
+             func(*args, **kwargs)
+ 
+-            if re.search('(ERROR|Traceback)', sys.stderr.getvalue()):
++            filtered_stderr=re.sub(r"""Exception ignored in: <bound method Resource\.__del__ of <wand\.image\.Image: \(empty\)>>
++Traceback \(most recent call last\):
++  File "/usr/lib/python3/dist-packages/wand/resource\.py", line [0-9]+, in __del__
++    self\.destroy\(\)
++  File "/usr/lib/python3/dist-packages/wand/image\.py", line [0-9]+, in destroy
++    for i in range\(0, len\(self\.sequence\)\):
++TypeError: object of type 'NoneType' has no len\(\)""","",sys.stderr.getvalue())#this is the expected result of freeing a single image (as opposed to an animation) in wand 0.4, not a blockdiag bug - #848748
++            if re.search('(ERROR|Traceback)', filtered_stderr):
+                 raise AssertionError('Caught error')
+         finally:
+             if sys.stderr.getvalue():

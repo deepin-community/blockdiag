@@ -1,5 +1,329 @@
-template-repository (1.0-1) unstable; urgency=medium
+blockdiag (2.0.1+dfsg-1deepin) unstable; urgency=medium
 
-  * Initial release
+  * update changelog.
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- LiChengGang <lichenggang@uniontech.com>  Thu, 23 Mar 2023 09:53:50 +0800
+
+blockdiag (2.0.1+dfsg-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/control
+    - Bumps Standards-Version to 4.5.1.
+    - Build-Depends
+      * Bumps debhelper-compat to 13.
+        - Deletes debian/compat
+      * Removes duplicates python3-pep8.
+  * debian/patches
+    - [add] rename-test-data-file.patch
+    - [add] updates-egg-info.patch
+    - [update] use-vlgothic-package-on-fullpath.patch
+    - [update] Fixed-remote-image-resouces.patch 
+    - [update] skip-test_app_cleans_up_images.patch
+    - [update] 848748-exception-ignored-in-Image-del.patch
+    - [update] remove-one-assert-in-test_node_attribute.patch
+    - [update] fixes-test_node_attribute.patch
+    - [delete] fixes_test_fontmap_duplicated_fontentry1.patch
+    - [delete] fix-py37-breaking-changes-around-iterators.patch 
+  * debian/rules
+    - Changes PYBUILD_BEFORE_TEST, PYBUILD_AFTER_TEST for
+      Fixed-remote-image-resouces.patch.
+  * debian/watch
+    - Fixes debian-watch-uses-insecure-uri.
+    - Bumps version to 4.
+    - Fixes dversionmangles.
+    - Appends repacksuffix.
+  * debian/copyright
+    - Removes
+      * Files: bootstrap.py paragraph.
+      * Lices: Zope-2.1
+  * Adds debian/source/include-binaries for testing.
+
+ -- Kouhei Maeda <mkouhei@palmtb.net>  Mon, 01 Feb 2021 20:56:59 +0900
+
+blockdiag (1.5.3+dfsg-5.3) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Removed Python 2 support (Closes: #936219).
+  * Switched to debhelper-compat (= 11), as the package was using
+    debian/compat with version 7, and debhelper >= 8.
+
+ -- Thomas Goirand <zigo@debian.org>  Thu, 24 Oct 2019 09:23:00 +0200
+
+blockdiag (1.5.3+dfsg-5.2) unstable; urgency=medium
+
+  * Non-maintainer upload.
+
+  [ Michal Arbet ]
+  * Add fix-py37-breaking-changes-around-iterators.patch (Closes: 903918)
+
+ -- Michal Arbet <michal.arbet@ultimum.io>  Mon, 16 Jul 2018 17:07:06 +0100
+
+blockdiag (1.5.3+dfsg-5.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Add patch to remove one assert in test_node_attribute() (Closes: #880235).
+
+ -- Thomas Goirand <zigo@debian.org>  Wed, 15 Nov 2017 10:44:08 +0000
+
+blockdiag (1.5.3+dfsg-5) unstable; urgency=medium
+
+  * debian/rules 
+    - Fixes to use PYBUILD {build_dir} instead of hardcoded temporary directory
+      on PYBUILD_BEFORE_TEST.
+    - Updates PYBUILD_AFTER_TEST.
+    - Removes overrider_dh_python2 target.
+    - Removes copying test image files to testimages directory
+      on overrider_dh_python3.
+  * debian/patches
+    - Deletes fixes-ghostscript_not_found_test.patch
+    - Updates Fixed-remote-image-resouces.patch.
+  * Removes unnecessary files.
+    - debian/python-blockdiag.links
+    - debian/python3-blockdiag.links  
+
+ -- Kouhei Maeda <mkouhei@palmtb.net>  Sun, 04 Jun 2017 12:08:49 +0900
+
+blockdiag (1.5.3+dfsg-4) unstable; urgency=medium
+
+  * debian/rules
+    - Changes to use PYBUILD_BEFORE_TEST instead of PYBUILD_BEFORE_BUILD,
+      for copying temporary files for testing.
+    - Appends deleting temporary files for testing on PYBUILD_AFTER_TEST.
+  * debian/patches
+    - fixes-ghostscript_not_found_test.patch
+      * Changes temporary files (circle.{eps,svg}) path.
+
+ -- Kouhei Maeda <mkouhei@palmtb.net>  Wed, 31 May 2017 07:19:40 +0900
+
+blockdiag (1.5.3+dfsg-3) unstable; urgency=medium
+
+  * Reverts the change.
+    - Bumps version debian/compat to 9.
+      * Fixes package-uses-deprecated-debhelper-compat-version.
+
+ -- Kouhei Maeda <mkouhei@palmtb.net>  Mon, 29 May 2017 20:44:19 +0900
+
+blockdiag (1.5.3+dfsg-2) unstable; urgency=medium
+
+  * Fixes build kills unrelated python processes. Closes: #847930
+    - debian/rules
+      * Removes PYBUILD_AFTER_BUILD,PYBUILD_{BEFORE,AFTER}_TEST options.
+    - debian/patches
+      * Adds use-vlgothic-package-on-fullpath.patch,
+        moves fontpath related modification
+        from Fixed-remote-image-resouces.patch
+      * Updates Fixed-remote-image-resouces.patch.
+    - debian/control
+      * Removes procps from Build-Depends.
+  * Fixes some test failures
+    - debian/patches
+      #* Removes 848748-exception-ignored-in-Image-del.patch unnecessary.
+      * Adds skip-test_app_cleans_up_images.patch.
+      * Adds fixes-test_node_attribute.patch.
+      * Adds fixes_test_fontmap_duplicated_fontentry1.patch.
+  * Fixes Missing Build-Depends on libmagickcore extra lib. Closes: #860689
+    - debian/control
+      * Appends libmagickcore-6.q16-3-extra to Build-Depends.
+  * Bumps version debian/compat to 9.
+    - Fixes package-uses-deprecated-debhelper-compat-version.
+  * debian/control
+    - Appends python-configparser to Build-Depends.
+
+ -- Kouhei Maeda <mkouhei@palmtb.net>  Fri, 26 May 2017 22:06:40 +0900
+
+blockdiag (1.5.3+dfsg-1.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Don't fail tests on a harmless wand warning. Closes: #848748
+
+ -- Rebecca N. Palmer <rebecca_palmer@zoho.com>  Sun, 22 Jan 2017 22:13:59 +0000
+
+blockdiag (1.5.3+dfsg-1) unstable; urgency=medium
+
+  * New upstream release. Closes: #801314
+  * debian/copyright
+    - Appends Files-Excluded section.
+  * debian/watch
+    - Changed to use dversionmangle instead of uversionmangle.
+  * debian/control
+    - Standards-Version: Bump version to 3.9.8.
+    - Build-Depends:
+      * Changes fonts-vlgothic instead of fonts-ipafont-gothic.
+      * Appends procps.
+  * debian/patches
+    - Deleted compat-pep8-1.5.7_1.6.x.patch.
+    - Updated Fixed-remote-image-resouces.patch.
+  * debian/rules
+    - Updated PYBUILD_BEFORE_TEST, PYBUILD_AFTER_TEST.
+  * Adds test data
+    - debian/circle.svg
+    - debian/circle.eps
+
+ -- Kouhei Maeda <mkouhei@palmtb.net>  Tue, 11 Oct 2016 10:21:04 +0900
+
+blockdiag (1.4.7-2.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * added a dependency on python-pep8. Closes: #817789
+
+ -- Georges Khaznadar <georgesk@debian.org>  Fri, 18 Mar 2016 18:17:54 +0100
+
+blockdiag (1.4.7-2) unstable; urgency=medium
+
+  * Fixes FTBFS: unknown format: SVG (Closes: #796371)
+    - debian/rules
+      * Adds PYBUILD_{BEFORE,AFTER}_{BUILD,TEST},
+        Thanks Piotr Ożarowski <piotr@debian.org>.
+    - debian/patches
+      * Adds compat-pep8-1.5.7_1.6.x.patch.
+  * debian/watch
+    - Fixes debian-watch-file-unsupported-pypi-url
+
+ -- Kouhei Maeda <mkouhei@palmtb.net>  Tue, 27 Oct 2015 16:41:46 +0900
+
+blockdiag (1.4.7-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Kouhei Maeda <mkouhei@palmtb.net>  Sat, 25 Oct 2014 21:28:57 +0900
+
+blockdiag (1.4.6-2) unstable; urgency=medium
+
+  * debian/watch
+    - Fixed uri scheme http:// to https://.
+
+ -- Kouhei Maeda <mkouhei@palmtb.net>  Thu, 16 Oct 2014 22:00:08 +0900
+
+blockdiag (1.4.6-1) unstable; urgency=medium
+
+  * New upstream release
+  * debian/control
+    - Removed Provides from python3-blockdiag.
+
+ -- Kouhei Maeda <mkouhei@palmtb.net>  Wed, 15 Oct 2014 07:51:10 +0900
+
+blockdiag (1.4.5-1) unstable; urgency=medium
+
+  * New upstream release
+  * debian/control
+    - Standards-Version: Bump version to 3.9.6.
+  * debian/copyright
+    - Rename src/blogdiag/diagparser.py to src/blockdiag/parser.py.
+    - Fixed space-in-std-shortname-in-dep5-copyright.
+
+ -- Kouhei Maeda <mkouhei@palmtb.net>  Mon, 13 Oct 2014 14:13:26 +0900
+
+blockdiag (1.4.3-1) unstable; urgency=medium
+
+  * New upstream release
+    - Fixed FTBFS blockdiag.tests.test_pep8.test_pep8 (Closes: #759889)
+  * Supported Python 3
+    - Appended python3-blockdiag package
+  * debian/control
+    - Build-Depends
+      * Removed: quilt
+      * Appended: dh-python, python3-all, python3-setuptools, python3-pep8,
+        python3-nose, python3-funcparserlib, python3-docutils, python3-pil,
+        python3-webcolors, python3-reportlab, python3-mock, python3-wand,
+        python-mock, python-wand
+    - Standards-Version: Bump version to 3.9.5
+  * debian/rules
+    - Applied pybuild
+    - Appended targets:
+      override_dh_python3, convert_manpage_blockdiag3
+  * debian/patches
+    - Removed update_egg-info.patch
+    - Added Fixed-remote-image-resouces.patch
+  * debian/pydist-overrides removed
+  * Added debian/python-blockdiag.links, debian/python3-blockdiag.links
+
+ -- Kouhei Maeda <mkouhei@palmtb.net>  Mon, 01 Sep 2014 07:59:05 +0900
+
+blockdiag (1.3.2-1) unstable; urgency=low
+
+  * New upstream release
+  * debian/control
+    - Change dependenry python-imaging to python-pil
+    - Append quilt to "Build-Depends"
+    - Append python-webcolors to "Depends"
+  * debian/docs
+    - Rename src/README.txt to README.rst
+    - Remove src/TODO.txt
+  * debian/copyright 
+    - Change "Format" section to latest url 
+
+ -- Kouhei Maeda <mkouhei@palmtb.net>  Sat, 23 Nov 2013 08:10:04 +0900
+
+blockdiag (1.2.4-1) unstable; urgency=low
+
+  * New upstream release
+  * debian/patches
+    - Has been deleted because it was no longer needed.
+    - update_egg-info, fix-pep8-violations, pep8-1.3.patch
+  * debian/control
+    - Update Standards-Version to 3.9.4
+
+ -- Kouhei Maeda <mkouhei@palmtb.net>  Mon, 10 Jun 2013 16:35:38 +0900
+
+blockdiag (1.1.6-1.2) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * debian/patches/pep8-1.3.patch: Backport patch from upstream to port to new
+    pep8 API. (Closes: #707119)
+  * debian/control: Bump Build-Depends on pep8 to >= 1.3.
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Sat, 18 May 2013 10:11:41 +0200
+
+blockdiag (1.1.6-1.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Fix PEP8 violations with a patch from upstream (31961dd5ba9b).
+    Closes: #681328
+
+ -- Evgeni Golov <evgeni@debian.org>  Wed, 18 Jul 2012 21:16:06 +0200
+
+blockdiag (1.1.6-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Kouhei Maeda <mkouhei@palmtb.net>  Sat, 09 Jun 2012 16:32:09 +0900
+
+blockdiag (1.1.5-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Kouhei Maeda <mkouhei@palmtb.net>  Tue, 24 Apr 2012 02:33:02 +0900
+
+blockdiag (1.1.4-1) unstable; urgency=low
+
+  * New upstream release
+  * debian/control
+    - Update debhelper version
+    - Add python-unittest2, pep8, python-nose, python-docutils,
+      python-reportlab, python-zc.buildout,
+      python-funcparserlib, (fonts-ipafont-gothic|fonts-japanese gothic)
+      to Build-Depends field
+    - Add python-docutils, python-reportlab to Depends field
+  * debian/rules
+    - Add override_dh_auto_test with nosetests
+  * src/blockdiag/utils/bootstrap.py
+    - Add quilt new fontdetect, change ipagp.ttf path to glob pattern
+
+ -- Kouhei Maeda <mkouhei@palmtb.net>  Tue, 17 Apr 2012 08:39:10 +0900
+
+blockdiag (1.1.2-2) unstable; urgency=low
+
+  * debian/control
+    - Update Homepage field
+    - Update extended description of Description field 
+  * quilt header
+    - Add header of "update_egg-info"
+
+ -- Kouhei Maeda <mkouhei@palmtb.net>  Sun, 12 Feb 2012 21:53:57 +0900
+
+blockdiag (1.1.2-1) unstable; urgency=low
+
+  * Initial release (Closes: #626707) 
+  * Update egg-info 
+
+ -- Kouhei Maeda <mkouhei@palmtb.net>  Sun, 08 Jan 2012 18:29:25 +0900

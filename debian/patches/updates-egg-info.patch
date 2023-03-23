@@ -1,0 +1,46 @@
+Descriptin: Removes Files-Excluded from SOURCES.txt and changes dependencies order in requires.txt
+Author: Kouhei Maeda <mkouhei@palmtb.net>
+Last-Update: 2021-02-01
+Index: blockdiag-2.0.1+dfsg/src/blockdiag.egg-info/SOURCES.txt
+===================================================================
+--- blockdiag-2.0.1+dfsg.orig/src/blockdiag.egg-info/SOURCES.txt	2021-02-01 17:14:49.919029297 +0900
++++ blockdiag-2.0.1+dfsg/src/blockdiag.egg-info/SOURCES.txt	2021-02-01 17:16:15.471025789 +0900
+@@ -90,12 +90,6 @@
+ src/blockdiag/tests/test_utils.py
+ src/blockdiag/tests/test_utils_fontmap.py
+ src/blockdiag/tests/utils.py
+-src/blockdiag/tests/VLGothic/LICENSE
+-src/blockdiag/tests/VLGothic/LICENSE.en
+-src/blockdiag/tests/VLGothic/LICENSE_E.mplus
+-src/blockdiag/tests/VLGothic/LICENSE_J.mplus
+-src/blockdiag/tests/VLGothic/VL-Gothic-Regular.ttf
+-src/blockdiag/tests/diagrams/README
+ src/blockdiag/tests/diagrams/auto_jumping_edge.diag
+ src/blockdiag/tests/diagrams/background_url_image.diag
+ src/blockdiag/tests/diagrams/beginpoint_color.diag
+Index: blockdiag-2.0.1+dfsg/src/blockdiag.egg-info/requires.txt
+===================================================================
+--- blockdiag-2.0.1+dfsg.orig/src/blockdiag.egg-info/requires.txt	2021-02-01 17:14:49.919029297 +0900
++++ blockdiag-2.0.1+dfsg/src/blockdiag.egg-info/requires.txt	2021-02-01 17:16:15.471025789 +0900
+@@ -1,6 +1,6 @@
+-setuptools
+-funcparserlib
+ Pillow>3.0
++funcparserlib
++setuptools
+ webcolors
+ 
+ [pdf]
+@@ -10,10 +10,10 @@
+ docutils
+ 
+ [testing]
+-nose
++docutils
+ flake8
+ flake8-coding
+ flake8-copyright
+ flake8-isort
++nose
+ reportlab
+-docutils
