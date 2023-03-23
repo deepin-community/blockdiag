@@ -1,4 +1,21 @@
 #!/usr/bin/make -f
+# -*- makefile -*-
+# Uncomment this to turn on verbose mode.
+# export DH_VERBOSE=1
+
+export PYBUILD_NAME=blockdiag
+export PYBUILD_BEFORE_TEST=cp -a $(CURDIR)/src/blockdiag.egg-info $(CURDIR)/debian/circle.* $(CURDIR)/debian/logo.ico {build_dir}
+export PYBUILD_AFTER_TEST=rm -rf {build_dir}/circle.* {build_dir}/logo.ico
 
 %:
-	dh $@
+	dh $@ --with python3 --buildsystem=pybuild
+
+override_dh_python3:
+	dh_python3 --shebang=/usr/bin/python3
+	mv -f $(CURDIR)/debian/python3-blockdiag/usr/bin/blockdiag $(CURDIR)/debian/python3-blockdiag/usr/bin/blockdiag3
+
+convert_manpage_blockdiag3:
+	sed 's/^blockdiag \\/blockdiag3 \\/' $(CURDIR)/blockdiag.1 > $(CURDIR)/debian/blockdiag3.1
+	sed -i 's/^.B blockdiag/.B blockdiag3/g' $(CURDIR)/debian/blockdiag3.1
+	sed -i 's/^.TH BLOCKDIAG /.TH BLOCKDIAG3 /' $(CURDIR)/debian/blockdiag3.1
+	sed -i 's/^\\fBblockdiag/\\fBblockdiag3/' $(CURDIR)/debian/blockdiag3.1

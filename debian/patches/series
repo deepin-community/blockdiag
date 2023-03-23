@@ -1,0 +1,8 @@
+Fixed-remote-image-resouces.patch
+use-vlgothic-package-on-fullpath.patch
+skip-test_app_cleans_up_images.patch
+fixes-test_node_attribute.patch
+848748-exception-ignored-in-Image-del.patch
+remove-one-assert-in-test_node_attribute.patch
+rename-test-data-file.patch
+updates-egg-info.patch
