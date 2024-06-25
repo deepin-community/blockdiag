@@ -1,33 +1,23 @@
-Description: Use VLGothic font file on fullpath for testing.
-
-Author: Kouhei Maeda <mkouhei@palmtb.net>
+From: Kouhei Maeda <mkouhei@palmtb.net>
+Subject: Use VLGothic font file on fullpath for testing.
 Forwarded: no
 Last-Update: 2021-01-31
-Index: blockdiag-2.0.1+dfsg/src/blockdiag/tests/test_generate_diagram.py
-===================================================================
---- blockdiag-2.0.1+dfsg.orig/src/blockdiag/tests/test_generate_diagram.py	2021-01-31 23:20:16.178779156 +0900
-+++ blockdiag-2.0.1+dfsg/src/blockdiag/tests/test_generate_diagram.py	2021-01-31 23:20:16.174779157 +0900
-@@ -25,12 +25,7 @@
- from blockdiag.tests.utils import (TemporaryDirectory, capture_stderr,
-                                    supported_pdf, supported_pil)
+---
+ src/blockdiag/tests/test_generate_diagram.py | 10 ++--------
+ 1 file changed, 2 insertions(+), 8 deletions(-)
+
+--- a/src/blockdiag/tests/test_generate_diagram.py
++++ b/src/blockdiag/tests/test_generate_diagram.py
+@@ -28,10 +28,9 @@
  
--TESTDIR = os.path.dirname(__file__)
--FONTPATH = os.path.join(TESTDIR, 'VLGothic', 'VL-Gothic-Regular.ttf')
+ TESTDIR = os.path.dirname(__file__)
+ FONTPATH = os.path.join(TESTDIR, 'VLGothic', 'VL-Gothic-Regular.ttf')
 -
 -
--def get_fontpath(testdir):
--    return os.path.join(testdir, 'VLGothic', 'VL-Gothic-Regular.ttf')
 +FONTPATH = '/usr/share/fonts/truetype/vlgothic/VL-Gothic-Regular.ttf'
+ def get_fontpath(testdir):
+-    return os.path.join(testdir, 'VLGothic', 'VL-Gothic-Regular.ttf')
++    return FONTPATH
  
  
  def get_diagram_files(testdir):
-@@ -68,8 +63,7 @@
- 
- @nottest
- def testcase_generator(basepath, mainfunc, files, options):
--    fontpath = get_fontpath(basepath)
--    options = options + ['-f', fontpath]
-+    options = options + ['-f', FONTPATH]
- 
-     for source in files:
-         yield generate, mainfunc, 'svg', source, options

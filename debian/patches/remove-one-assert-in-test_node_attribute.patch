@@ -1,14 +1,17 @@
-Description: Remove one assert in test_node_attribute
-Author: Thomas Goirand <zigo@debian.org>
+From: Thomas Goirand <zigo@debian.org>
+Subject: Remove one assert in test_node_attribute
 Bug-Debian: https://bugs.debian.org/880235
 Forwarded: no
 Last-Update: 2021-01-31
+---
+ src/blockdiag/tests/test_builder_node.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: blockdiag-2.0.1+dfsg/src/blockdiag/tests/test_builder_node.py
-===================================================================
---- blockdiag-2.0.1+dfsg.orig/src/blockdiag/tests/test_builder_node.py	2021-01-31 23:23:21.702771548 +0900
-+++ blockdiag-2.0.1+dfsg/src/blockdiag/tests/test_builder_node.py	2021-01-31 23:23:21.702771548 +0900
-@@ -109,7 +109,7 @@
+diff --git a/src/blockdiag/tests/test_builder_node.py b/src/blockdiag/tests/test_builder_node.py
+index 4bc7921..e8fa058 100644
+--- a/src/blockdiag/tests/test_builder_node.py
++++ b/src/blockdiag/tests/test_builder_node.py
+@@ -109,7 +109,7 @@ class TestBuilderNode(BuilderTestCase):
          self.assertNodeStacked(diagram, stacked)
          self.assertNodeFontsize(diagram, fontsize)
          self.assertNodeLabel_Orientation(diagram, orientations)
