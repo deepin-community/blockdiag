@@ -1,11 +1,15 @@
-Description: Changes remote image resource to local files from base packages.
-Author: Kouhei Maeda <mkouhei@palmtb.net>
+From: Kouhei Maeda <mkouhei@palmtb.net>
+Subject: Changes remote image resource to local files from base packages.
 Last-Update: 2021-01-31
+---
+ src/blockdiag/tests/diagrams/background_url_image.diag | 9 +++++----
+ src/blockdiag/tests/diagrams/node_icon.diag            | 2 +-
+ 2 files changed, 6 insertions(+), 5 deletions(-)
 
-Index: blockdiag-2.0.1+dfsg/src/blockdiag/tests/diagrams/background_url_image.diag
-===================================================================
---- blockdiag-2.0.1+dfsg.orig/src/blockdiag/tests/diagrams/background_url_image.diag	2021-01-31 23:18:56.102782440 +0900
-+++ blockdiag-2.0.1+dfsg/src/blockdiag/tests/diagrams/background_url_image.diag	2021-01-31 23:19:30.122781045 +0900
+diff --git a/src/blockdiag/tests/diagrams/background_url_image.diag b/src/blockdiag/tests/diagrams/background_url_image.diag
+index 18183a9..450258e 100644
+--- a/src/blockdiag/tests/diagrams/background_url_image.diag
++++ b/src/blockdiag/tests/diagrams/background_url_image.diag
 @@ -1,7 +1,8 @@
  {
 -  A [background = "http://python.org/images/python-logo.gif"];
@@ -19,10 +23,10 @@ Index: blockdiag-2.0.1+dfsg/src/blockdiag/tests/diagrams/background_url_image.di
 +  E [background = "circle.svg"];
    Z;
  }
-Index: blockdiag-2.0.1+dfsg/src/blockdiag/tests/diagrams/node_icon.diag
-===================================================================
---- blockdiag-2.0.1+dfsg.orig/src/blockdiag/tests/diagrams/node_icon.diag	2021-01-31 23:18:56.102782440 +0900
-+++ blockdiag-2.0.1+dfsg/src/blockdiag/tests/diagrams/node_icon.diag	2021-01-31 23:19:54.734780036 +0900
+diff --git a/src/blockdiag/tests/diagrams/node_icon.diag b/src/blockdiag/tests/diagrams/node_icon.diag
+index 5a81785..d470ccc 100644
+--- a/src/blockdiag/tests/diagrams/node_icon.diag
++++ b/src/blockdiag/tests/diagrams/node_icon.diag
 @@ -2,5 +2,5 @@
    A -> B;
  

@@ -22,7 +22,6 @@ examples/screen.svg
 examples/simple.diag
 examples/simple.png
 examples/simple.svg
-src/blockdiag_sphinxhelper.py
 src/blockdiag/__init__.py
 src/blockdiag/builder.py
 src/blockdiag/command.py
@@ -98,6 +97,7 @@ src/blockdiag/tests/VLGothic/VL-Gothic-Regular.ttf
 src/blockdiag/tests/diagrams/README
 src/blockdiag/tests/diagrams/auto_jumping_edge.diag
 src/blockdiag/tests/diagrams/background_url_image.diag
+src/blockdiag/tests/diagrams/background_url_local.diag
 src/blockdiag/tests/diagrams/beginpoint_color.diag
 src/blockdiag/tests/diagrams/branched.diag
 src/blockdiag/tests/diagrams/circular_ref.diag
@@ -158,6 +158,7 @@ src/blockdiag/tests/diagrams/nested_groups_work_node_decorator.diag
 src/blockdiag/tests/diagrams/nested_skipped_circular.diag
 src/blockdiag/tests/diagrams/node_attribute.diag
 src/blockdiag/tests/diagrams/node_attribute_and_group.diag
+src/blockdiag/tests/diagrams/node_has_block_label.diag
 src/blockdiag/tests/diagrams/node_has_multilined_label.diag
 src/blockdiag/tests/diagrams/node_height.diag
 src/blockdiag/tests/diagrams/node_icon.diag

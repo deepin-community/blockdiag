@@ -1,10 +1,18 @@
-Description: Fixes package-contains-documentation-outside-usr-share-doc for testing data
-Author: Kouhei Maeda <mkouhei@palmtb.net>
+From: Kouhei Maeda <mkouhei@palmtb.net>
+Subject: Fixes package-contains-documentation-outside-usr-share-doc for
+ testing data
 Last-Update: 2021-02-01
-Index: blockdiag-2.0.1+dfsg/src/blockdiag/tests/diagrams/README
-===================================================================
---- blockdiag-2.0.1+dfsg.orig/src/blockdiag/tests/diagrams/README	2021-01-31 23:34:47.910743408 +0900
-+++ /dev/null	1970-01-01 00:00:00.000000000 +0000
+
+---
+ src/blockdiag/tests/diagrams/README          | 12 ------------
+ src/blockdiag/tests/diagrams/testdata.rst    | 12 ++++++++++++
+ src/blockdiag/tests/test_generate_diagram.py |  2 +-
+ 3 files changed, 13 insertions(+), 13 deletions(-)
+ delete mode 100644 src/blockdiag/tests/diagrams/README
+ create mode 100644 src/blockdiag/tests/diagrams/testdata.rst
+
+--- a/src/blockdiag/tests/diagrams/README
++++ /dev/null
 @@ -1,12 +0,0 @@
 -Copyrights of images
 -=====================
@@ -18,23 +26,8 @@ Index: blockdiag-2.0.1+dfsg/src/blockdiag/tests/diagrams/README
 -it is modified format::
 -
 -  $ convert debian-logo-original.png -type PaletteAlpha -colors 256 -transparent #000000 debian-logo-256color-palettealpha.png
-Index: blockdiag-2.0.1+dfsg/src/blockdiag/tests/test_generate_diagram.py
-===================================================================
---- blockdiag-2.0.1+dfsg.orig/src/blockdiag/tests/test_generate_diagram.py	2021-01-31 23:34:47.910743408 +0900
-+++ blockdiag-2.0.1+dfsg/src/blockdiag/tests/test_generate_diagram.py	2021-01-31 23:34:47.906743409 +0900
-@@ -31,7 +31,7 @@
- def get_diagram_files(testdir):
-     diagramsdir = os.path.join(testdir, 'diagrams')
- 
--    skipped = ['README', 'debian-logo-256color-palettealpha.png',
-+    skipped = ['testdata.rst', 'debian-logo-256color-palettealpha.png',
-                'errors', 'white.gif']
-     for file in os.listdir(diagramsdir):
-         if file in skipped:
-Index: blockdiag-2.0.1+dfsg/src/blockdiag/tests/diagrams/testdata.rst
-===================================================================
---- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ blockdiag-2.0.1+dfsg/src/blockdiag/tests/diagrams/testdata.rst	2021-01-31 23:35:49.826740869 +0900
+--- /dev/null
++++ b/src/blockdiag/tests/diagrams/testdata.rst
 @@ -0,0 +1,12 @@
 +Copyrights of images
 +=====================
@@ -48,3 +41,14 @@ Index: blockdiag-2.0.1+dfsg/src/blockdiag/tests/diagrams/testdata.rst
 +it is modified format::
 +
 +  $ convert debian-logo-original.png -type PaletteAlpha -colors 256 -transparent #000000 debian-logo-256color-palettealpha.png
+--- a/src/blockdiag/tests/test_generate_diagram.py
++++ b/src/blockdiag/tests/test_generate_diagram.py
+@@ -32,7 +32,7 @@
+ def get_diagram_files(testdir):
+     diagramsdir = os.path.join(testdir, 'diagrams')
+ 
+-    skipped = ['README', 'debian-logo-256color-palettealpha.png',
++    skipped = ['testdata.rst', 'debian-logo-256color-palettealpha.png',
+                'errors', 'invalid.txt', 'white.gif']
+     for file in os.listdir(diagramsdir):
+         if file in skipped:

@@ -1,2 +1,1 @@
 blockdiag
-blockdiag_sphinxhelper

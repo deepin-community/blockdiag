@@ -1,27 +1,27 @@
 Source: blockdiag
 Section: python
 Priority: optional
-Maintainer: Kouhei Maeda <mkouhei@palmtb.net>
+Maintainer: Debian Python Team <team+python@tracker.debian.org>
+Uploaders: Kouhei Maeda <mkouhei@palmtb.net>,
+           Sergio de Almeida Cipriano Junior <sergiosacj@riseup.net>
 Build-Depends: debhelper-compat (= 13),
                dh-python,
                libmagickcore-6.q16-3-extra,
-               python3-unittest2,
                python3-docutils,
-               python3-pep8,
                python3-all,
                python3-setuptools,
                python3-nose,
                python3-funcparserlib (>= 0.3.4),
-               python3-docutils,
                python3-pil,
                python3-webcolors,
                python3-reportlab,
-               python3-mock,
                python3-wand,
-               python3-zc.buildout,
                fonts-vlgothic | fonts-japanese-gothic
-Standards-Version: 4.5.1
+Standards-Version: 4.6.2
 Homepage: http://blockdiag.com/
+Vcs-Browser: https://salsa.debian.org/python-team/packages/blockdiag
+Vcs-Git: https://salsa.debian.org/python-team/packages/blockdiag.git
+Rules-Requires-Root: no
 
 Package: python3-blockdiag
 Architecture: all
@@ -34,5 +34,5 @@ Depends: ${misc:Depends}, ${python3:Depends},
 Description: generate block-diagram image file from spec-text file for Python 3
  For Python 3.
  Generate block-diagram from dot like text with multilingualization for
- node-label. But this supports utf-8 only. It is able to embed to sphinx with 
+ node-label. But this supports utf-8 only. It is able to embed to sphinx with
  using python-sphinxcontrib-blockdiag.
