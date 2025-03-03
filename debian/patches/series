@@ -6,3 +6,4 @@ remove-one-assert-in-test_node_attribute.patch
 rename-test-data-file.patch
 0009-Add-support-for-Pillow-10.patch
 disable-svg_sanitizes_url_on_error_test
+remove-nose
