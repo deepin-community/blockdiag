@@ -1,0 +1,37 @@
+--- a/src/blockdiag/tests/test_command.py
++++ b/src/blockdiag/tests/test_command.py
+@@ -16,14 +16,12 @@
+ import os
+ import unittest
+ 
+-from nose.tools import nottest
+ from blockdiag.command import BlockdiagApp
+ from blockdiag.tests.utils import TemporaryDirectory
+ 
+ 
+ class TestBlockdiagApp(unittest.TestCase):
+-    @nottest
+-    def test_app_cleans_up_images(self):
++    def __test_app_cleans_up_images(self):
+         testdir = os.path.dirname(__file__)
+         diagpath = os.path.join(testdir,
+                                 'diagrams',
+--- a/src/blockdiag/tests/test_generate_diagram.py
++++ b/src/blockdiag/tests/test_generate_diagram.py
+@@ -19,8 +19,6 @@
+ import unittest
+ from xml.etree import ElementTree
+ 
+-from nose.tools import nottest
+-
+ import blockdiag
+ import blockdiag.command
+ from blockdiag.tests.utils import (TemporaryDirectory, capture_stderr,
+@@ -66,7 +64,6 @@
+         yield testcase
+ 
+ 
+-@nottest
+ def testcase_generator(basepath, mainfunc, files, options):
+     fontpath = get_fontpath(basepath)
+     options = options + ['-f', fontpath]
